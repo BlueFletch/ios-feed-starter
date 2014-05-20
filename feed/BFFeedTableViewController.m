@@ -72,32 +72,40 @@
     [cell.profileImage setImageWithURL:[NSURL URLWithString:post.postUser.imageUrl relativeToURL:[NSURL URLWithString:BFObjectManager.baseURL]]];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!self.metricsCell) {
-        self.metricsCell = [self.tableView dequeueReusableCellWithIdentifier:@"feedCell"];
-    }
-    // We need to adjust the metrics cell's frame to handle table width changes (e.g. rotations).
-    CGRect theFrame = self.metricsCell.frame;
-    theFrame.size.width = self.tableView.bounds.size.width;
-    self.metricsCell.frame = theFrame;
-    
-    // Set up the metrics cell using real populated content.
-    [self configureCell:self.metricsCell atIndexPath:indexPath];
-    
-    // Force a layout.
-    //Layout and Autolayout update UIView
-    [ self.metricsCell setNeedsUpdateConstraints];
-    [ self.metricsCell updateConstraintsIfNeeded];
-    [ self.metricsCell.contentView setNeedsLayout];
-    [ self.metricsCell.contentView layoutIfNeeded];
-    
-    // Get the layout size - we ignore the width - in the fact the width _could_ conceivably be zero.
-    // Note: Using content view is intentional.
-    CGSize theSize = [self.metricsCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    
-    return (theSize.height + 1);
+	BFPost *post = self.feed[indexPath.row];
+	NSString *text = post.postText;
+	CGFloat minHeight = 60.0f;
+	
+	CGFloat fontSize = 14;
+	CGFloat height = [self calculateHeightOfTextFromWidth:text font:[UIFont systemFontOfSize:fontSize] width:248.0f minHeight: minHeight lineBreakMode:NSLineBreakByWordWrapping];
+	
+	return (height > minHeight) ? height : minHeight;
 }
+
+-(CGFloat) calculateHeightOfTextFromWidth:(NSString*)text font:(UIFont*)withFont  width:(float)width minHeight:(float)minHeight lineBreakMode:(NSLineBreakMode)lineBreakMode
+{
+	NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+	paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+	paragraphStyle.alignment = NSTextAlignmentLeft;
+	
+	NSDictionary * attributes = @{NSFontAttributeName : withFont,
+								  NSParagraphStyleAttributeName : paragraphStyle};
+	
+	CGSize suggestedSize = [text boundingRectWithSize:(CGSize){width, CGFLOAT_MAX}
+											  options:NSStringDrawingUsesLineFragmentOrigin
+										   attributes:attributes
+											  context:nil].size;
+	
+	if (suggestedSize.height > 20.0f) {
+		CGFloat difference = suggestedSize.height - 20.0f;
+		minHeight += difference;
+	}
+	
+	return (suggestedSize.height >= minHeight) ? suggestedSize.height : minHeight;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewAutomaticDimension;

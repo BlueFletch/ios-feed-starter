@@ -31,6 +31,7 @@
 		6CFCBA4D192A9F250084E937 /* BFComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFCBA4C192A9F250084E937 /* BFComment.m */; };
 		6CFCBA50192AA33A0084E937 /* BFFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFCBA4F192AA33A0084E937 /* BFFeedManager.m */; };
 		A2B797B25F5347258F428D67 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1009DCC323A457FB072EE9D /* libPods.a */; };
+		AD188B0B192BD24D003AD235 /* BF-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AD188B0A192BD24D003AD235 /* BF-Logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		6CFCBA4C192A9F250084E937 /* BFComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFComment.m; sourceTree = "<group>"; };
 		6CFCBA4E192AA33A0084E937 /* BFFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFFeedManager.h; sourceTree = "<group>"; };
 		6CFCBA4F192AA33A0084E937 /* BFFeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFFeedManager.m; sourceTree = "<group>"; };
+		AD188B0A192BD24D003AD235 /* BF-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BF-Logo.png"; sourceTree = "<group>"; };
 		DEEFB71BE1394999BECCCF33 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F1009DCC323A457FB072EE9D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 		6C19440C192A890C00CE3DA8 = {
 			isa = PBXGroup;
 			children = (
+				AD188B08192BCCC4003AD235 /* images */,
 				6CFCBA39192A99040084E937 /* service */,
 				6CFCBA3B192A99040084E937 /* models */,
 				6C19441E192A890C00CE3DA8 /* feed */,
@@ -221,6 +224,14 @@
 			path = feed/models;
 			sourceTree = "<group>";
 		};
+		AD188B08192BCCC4003AD235 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				AD188B0A192BD24D003AD235 /* BF-Logo.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -300,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD188B0B192BD24D003AD235 /* BF-Logo.png in Resources */,
 				6C194431192A890C00CE3DA8 /* Images.xcassets in Resources */,
 				6C194423192A890C00CE3DA8 /* InfoPlist.strings in Resources */,
 				6C19442C192A890C00CE3DA8 /* Main.storyboard in Resources */,

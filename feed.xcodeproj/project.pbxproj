@@ -61,6 +61,8 @@
 		6C19443F192A890C00CE3DA8 /* feedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "feedTests-Info.plist"; sourceTree = "<group>"; };
 		6C194441192A890C00CE3DA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6C194443192A890C00CE3DA8 /* feedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = feedTests.m; sourceTree = "<group>"; };
+		6C6BEB39192BD797008EFE99 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		6C6BEB3B192BD7A0008EFE99 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6C743B45192B913D008BFB43 /* BFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFLoginViewController.h; sourceTree = "<group>"; };
 		6C743B46192B913D008BFB43 /* BFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFLoginViewController.m; sourceTree = "<group>"; };
 		6C743B4B192B96E9008BFB43 /* BFFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFFeedTableViewCell.h; sourceTree = "<group>"; };
@@ -135,6 +137,8 @@
 		6C194417192A890C00CE3DA8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6C6BEB3B192BD7A0008EFE99 /* MobileCoreServices.framework */,
+				6C6BEB39192BD797008EFE99 /* CFNetwork.framework */,
 				6C194418192A890C00CE3DA8 /* Foundation.framework */,
 				6C19441A192A890C00CE3DA8 /* CoreGraphics.framework */,
 				6C19441C192A890C00CE3DA8 /* UIKit.framework */,
@@ -271,6 +275,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = bluefletch;
 				TargetAttributes = {
+					6C194414192A890C00CE3DA8 = {
+						DevelopmentTeam = 6NXWRT5NFB;
+					};
 					6C194435192A890C00CE3DA8 = {
 						TestTargetID = 6C194414192A890C00CE3DA8;
 					};
@@ -491,6 +498,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "feed/feed-Prefix.pch";
 				INFOPLIST_FILE = "feed/feed-Info.plist";
@@ -505,6 +514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "feed/feed-Prefix.pch";
 				INFOPLIST_FILE = "feed/feed-Info.plist";

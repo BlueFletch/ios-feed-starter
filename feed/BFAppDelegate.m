@@ -9,6 +9,9 @@
 #import "BFAppDelegate.h"
 #import <RestKit/RestKit.h>
 #import "BButton.h"
+#import "UAirship.h"
+#import "UAConfig.h"
+#import "UAPush.h"
 
 @implementation BFAppDelegate
 
@@ -20,6 +23,17 @@
     //let AFNetworking manage the activity indicator
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
+    UAConfig *config = [UAConfig defaultConfig];
+    config.developmentAppKey = @"WiSuM8BWRTCYvV01RYOYUw";
+    config.developmentAppSecret = @"_t63_4GmRPmmHQLMg5spsg";
+    config.inProduction = false;
+
+    // Call takeOff (which creates the UAirship singleton)
+    [UAirship takeOff:config];
+    [UAPush setDefaultPushEnabledValue:NO];
+    [UAPush shared].notificationTypes = (UIRemoteNotificationTypeBadge |
+                                         UIRemoteNotificationTypeSound |
+                                         UIRemoteNotificationTypeAlert);
     
     [[BButton appearance]setStyle:BButtonStyleBootstrapV3];
     return YES;

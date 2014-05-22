@@ -10,6 +10,7 @@
 #import "BFFeedTableViewController.h"
 #import "BButton.h"
 #import "BFFeedManager.h"
+#import "UAPush.h"
 #import "BFUserManager.h"
 
 @interface BFLoginViewController ()
@@ -55,6 +56,11 @@
     NSString *pwd = self.password.text;
     [[BFUserManager sharedManager] authenticateWithUsername:username password:pwd success:^(BFUser *user) {
         self.isAuthenticated = true;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[UAPush shared] setAlias:username];
+            [[UAPush shared] setTags:@[@"BFUsers"]];
+            [[UAPush shared] setPushEnabled:YES];
+        });
         [self loadFeed];
         
         NSLog(@"Authenticated successfully");

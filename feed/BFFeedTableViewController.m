@@ -11,6 +11,7 @@
 #import "BFPost.h"
 #import <AFNetworking/AFNetworking.h>
 #import "BFObjectManager.h"
+#import "UAPush.h"
 
 @interface BFFeedTableViewController ()
 @property (readwrite, nonatomic) BFFeedTableViewCell *metricsCell;
@@ -42,7 +43,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void) viewWillAppear:(BOOL)animated {
+    [[UAPush shared] resetBadge];//zero badge
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

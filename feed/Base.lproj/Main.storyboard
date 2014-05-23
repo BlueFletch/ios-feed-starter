@@ -138,12 +138,73 @@
                             <outlet property="delegate" destination="ipw-G5-7kZ" id="Bza-vg-hdl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Cp7-Od-CfF"/>
+                    <navigationItem key="navigationItem" id="Cp7-Od-CfF">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="1r6-zp-rOH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cef-yg-Ehu" customClass="BButton">
+                                <rect key="frame" x="254" y="5" width="50" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ZUA-Kg-Ugy" kind="push" id="elB-nJ-hFD"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="addPostButton" destination="Cef-yg-Ehu" id="1uw-nX-dLr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v91-qa-3mp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="486" y="106"/>
+        </scene>
+        <!--Add Post View Controller-->
+        <scene sceneID="60M-he-H2n">
+            <objects>
+                <viewController id="ZUA-Kg-Ugy" customClass="BFAddPostViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FzE-6A-By8"/>
+                        <viewControllerLayoutGuide type="bottom" id="wrQ-vJ-oTv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="06j-1s-mBB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ig3-kq-mDp">
+                                <rect key="frame" x="20" y="93" width="280" height="217"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JC-yJ-JFI" customClass="BButton">
+                                <rect key="frame" x="20" y="318" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Post Entry">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAdd:" destination="ZUA-Kg-Ugy" eventType="touchUpInside" id="I4q-ZN-zhX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PG9-72-sL0"/>
+                    <connections>
+                        <outlet property="addButton" destination="1JC-yJ-JFI" id="f7w-zt-Ghv"/>
+                        <outlet property="textInput" destination="Ig3-kq-mDp" id="aKX-By-f1W"/>
+                        <segue destination="0im-7r-vJg" kind="unwind" identifier="backToFeed" unwindAction="unwindSegue:" id="SJ1-cp-OFY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6b4-es-opG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0im-7r-vJg" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="106"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ojW-oR-gkI">

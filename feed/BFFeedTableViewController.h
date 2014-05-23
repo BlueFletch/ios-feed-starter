@@ -10,5 +10,5 @@
 
 @interface BFFeedTableViewController : UITableViewController
 
-@property (strong) NSArray *feed;
+@property (strong) NSMutableArray *feed;
 @end

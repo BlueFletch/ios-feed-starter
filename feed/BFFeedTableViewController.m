@@ -11,8 +11,12 @@
 #import "BFPost.h"
 #import <AFNetworking/AFNetworking.h>
 #import "BFObjectManager.h"
+#import "BButton.h"
+#import "BFFeedManager.h"
+#import "BFAddPostViewController.h"
 
 @interface BFFeedTableViewController ()
+@property (weak, nonatomic) IBOutlet BButton *addPostButton;
 @property (readwrite, nonatomic) BFFeedTableViewCell *metricsCell;
 
 @end
@@ -35,6 +39,17 @@
     self.title = @"BF Feed";
     self.navigationController.navigationBarHidden = false;
     self.navigationItem.hidesBackButton = true;
+    
+    
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    
+    
+    [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = refresh;
+    
+    [self.addPostButton setType:BButtonTypeDanger];
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,6 +105,27 @@
 {
     return UITableViewAutomaticDimension;
 }
+- (void) refresh {
+    [[BFFeedManager sharedManager] getFeed:^(NSArray * feed) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.feed = [NSMutableArray arrayWithArray:feed];
+            [self.tableView reloadData];
+            if (self.refreshControl.isRefreshing)
+                [self.refreshControl endRefreshing];
+
+        });
+    } failure:^(RKObjectRequestOperation * operation, NSError * error) {
+        
+    }];
+}
+
+- (IBAction)unwindSegue:(UIStoryboardSegue *)segue {
+    //read saved post out of "Add Post" controller
+    BFAddPostViewController *ctrl = segue.sourceViewController;
+    [self.feed insertObject:ctrl.savedPost atIndex:0];
+    [self.tableView reloadData];
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

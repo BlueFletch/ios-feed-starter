@@ -101,6 +101,10 @@
     }
 }
 
+
+-(BOOL)shouldAutorotate {
+    return false;
+}
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     if([identifier isEqualToString:@"loginSegue"])

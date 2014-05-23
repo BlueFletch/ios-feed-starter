@@ -10,6 +10,6 @@
 
 @interface BFFeedTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
-@property (weak, nonatomic) IBOutlet UITextView *feedText;
+@property (weak, nonatomic) IBOutlet UILabel *feedText;
 
 @end

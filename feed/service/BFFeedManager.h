@@ -17,6 +17,6 @@
 
 - (void) getFeed:(void (^)(NSArray *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure;
 
-- (void) createPost:(BFPost *)post success:(void (^)(BFPost *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure;
+- (void) createPost:(NSString *)postText success:(void (^)(BFPost *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure;
 
 @end

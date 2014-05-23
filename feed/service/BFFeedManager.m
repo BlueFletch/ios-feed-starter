@@ -33,9 +33,9 @@ static BFFeedManager *sharedManager = nil;
     }];
 }
 
-- (void) createPost:(BFPost *)post success:(void (^)(BFPost *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure {
+- (void) createPost:(NSString *)postText success:(void (^)(BFPost *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure {
     
-    [self postObject:post path:@"post" parameters:@{@"username":BFUserManager.username} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [self postObject:nil path:@"post" parameters:@{@"username":BFUserManager.username, @"postText":postText} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (failure) failure(operation, error);

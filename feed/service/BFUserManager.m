@@ -13,6 +13,7 @@
 
 @implementation BFUserManager
 
+static NSString *_username;
 static BFUserManager *sharedManager = nil;
 
 + (instancetype)sharedManager {
@@ -23,11 +24,15 @@ static BFUserManager *sharedManager = nil;
     
     return sharedManager;
 }
++ (NSString *)username {
+    return _username;
+}
 
 - (void) authenticateWithUsername:(NSString *)username password:(NSString *)password success:(void (^)(BFUser *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure {
     [self postObject:nil path:@"login" parameters:@{@"username":username, @"password": password} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         if (success) {
             BFUser *currentUser = (BFUser *)[mappingResult.array firstObject];
+            _username = username;
             success(currentUser);
         }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {

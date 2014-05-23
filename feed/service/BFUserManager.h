@@ -10,6 +10,8 @@
 #import "BFUser.h"
 
 @interface BFUserManager : BFObjectManager
+
++ (NSString *) username;
 - (void) authenticateWithUsername:(NSString *)username password:(NSString *)password success:(void (^)(BFUser *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure;
 
 @end

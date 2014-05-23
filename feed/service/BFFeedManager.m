@@ -10,6 +10,7 @@
 #import <RestKit/RestKit.h>
 #import "BFPost.h"
 #import "BFMappingProvider.h"
+#import "BFUserManager.h"
 
 @implementation BFFeedManager
 
@@ -34,7 +35,7 @@ static BFFeedManager *sharedManager = nil;
 
 - (void) createPost:(BFPost *)post success:(void (^)(BFPost *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure {
     
-    [self postObject:post path:@"post" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [self postObject:post path:@"post" parameters:@{@"username":BFUserManager.username} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (failure) failure(operation, error);

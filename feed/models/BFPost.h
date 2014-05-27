@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSString *postId;
 @property (nonatomic, strong) NSString *postText;
 @property (nonatomic, strong) BFUser *postUser;
-
+@property (nonatomic, strong) NSDate *createdDate;
 @property (nonatomic, strong) NSArray *comments;
 
 @property (nonatomic) BOOL isNewPost;

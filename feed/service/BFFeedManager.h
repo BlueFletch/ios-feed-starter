@@ -15,8 +15,12 @@
 
 @interface BFFeedManager : BFObjectManager
 
-- (void) getFeed:(void (^)(NSArray *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure;
+extern NSString * const BFFeedStarted;
+extern NSString * const BFFeedEnded;
+extern NSString * const BFFeedFailed;
 
-- (void) createPost:(NSString *)postText success:(void (^)(BFPost *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure;
+- (void) getFeed:(void (^)(NSArray * feed))success failure:(void (^)(RKObjectRequestOperation * operation, NSError *error))failure;
+- (void) createPost:(NSString *)postText success:(void (^)(BFPost *post))success failure:(void (^)(RKObjectRequestOperation * operation, NSError *error))failure;
+- (void) createComment:(NSString *)commentText forPostId:(NSString *)postId success:(void (^)(BFComment *post))success failure:(void (^)(RKObjectRequestOperation * operation, NSError *error))failure;
 
 @end

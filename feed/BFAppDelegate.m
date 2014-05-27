@@ -9,20 +9,54 @@
 #import "BFAppDelegate.h"
 #import <RestKit/RestKit.h>
 #import "BButton.h"
+#import "CRToast.h"
+#import "UAConfig.h"
+#import "UAirship.h"
+#import "UAPush.h"
 
 @implementation BFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
-    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
     //let AFNetworking manage the activity indicator
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
+    [CRToastManager setDefaultOptions:@{
+                                        kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                        kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
+                                        kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeSpring),
+                                        kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
+                                        kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop)
+                                        }];
     
+    UAConfig *config = [UAConfig defaultConfig];
+    config.developmentAppSecret = @"_t63_4GmRPmmHQLMg5spsg";
+    config.developmentAppKey = @"WiSuM8BWRTCYvV01RYOYUw";
+    config.inProduction = false;
+    
+    [UAirship takeOff:config];
+    
+    [UAPush setDefaultPushEnabledValue:NO];
+    [UAPush shared].notificationTypes = (UIRemoteNotificationTypeBadge |
+                                         UIRemoteNotificationTypeSound |
+                                         UIRemoteNotificationTypeAlert);
+
+    [UAPush shared].pushNotificationDelegate = self;
+
     [[BButton appearance]setStyle:BButtonStyleBootstrapV3];
     return YES;
+}
+- (void) receivedForegroundNotification:(NSDictionary *)notification {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"newContentAvailable" object:self];
+}
+- (void) launchedFromNotification:(NSDictionary *)notification {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"newContentAvailable" object:self];
+}
+- (void)displayNotificationAlert:(NSString *)alertMessage {
+    //don't show
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -45,6 +79,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[UAPush shared] resetBadge];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

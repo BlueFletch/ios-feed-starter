@@ -11,6 +11,8 @@
 
 @implementation BFObjectManager
 
+//static NSString * const _baseUrl = @"http://feed.bluefletch.com/";
+
 static NSString * const _baseUrl = @"https://bfapp-bfsharing.rhcloud.com/";
 
 + (NSString *) baseURL {

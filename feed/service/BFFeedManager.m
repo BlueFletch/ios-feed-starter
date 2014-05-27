@@ -14,6 +14,10 @@
 
 @implementation BFFeedManager
 
+NSString * const BFFeedStarted = @"BFFeedStarted";
+NSString * const BFFeedFailed = @"BFFeedFailed";
+NSString * const BFFeedEnded = @"BFFeedEnded";
+
 static BFFeedManager *sharedManager = nil;
 
 + (instancetype)sharedManager {
@@ -25,21 +29,49 @@ static BFFeedManager *sharedManager = nil;
     return sharedManager;
 }
 
--(void)getFeed:(void (^)(NSArray *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure {
+-(void)getFeed:(void (^)(NSArray * feed))success failure:(void (^)(RKObjectRequestOperation * operation, NSError *error))failure {
+    [[NSNotificationCenter defaultCenter] postNotificationName:BFFeedStarted object:nil];
+    
     [self getObjectsAtPath:@"feed" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:BFFeedEnded object:nil];
+        
+        //read post ids
+        for (BFPost *post in [mappingResult array]) {
+            for(BFComment *comment in post.comments) {
+                comment.parentPostId = post.postId;
+            }
+        }
         success([mappingResult array]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:BFFeedEnded object:nil];
         if (failure) failure(operation, error);
     }];
 }
 
-- (void) createPost:(NSString *)postText success:(void (^)(BFPost *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure {
+- (void) createPost:(NSString *)postText success:(void (^)(BFPost *post))success failure:(void (^)(RKObjectRequestOperation * operation, NSError *error))failure;{
     
     [self postObject:nil path:@"post" parameters:@{@"username":BFUserManager.username, @"postText":postText} success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success([mappingResult firstObject]);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (failure) failure(operation, error);
     }];
+}
+- (void) createComment:(NSString *)commentText forPostId:(NSString *)postId success:(void (^)(BFComment *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure {
+    
+    [self postObject:nil
+                path:@"comment"
+          parameters:@{
+                       @"username":BFUserManager.username,
+                       @"commentText":commentText,
+                       @"postId": postId
+                    }
+             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                success([mappingResult firstObject]);
+             }
+             failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                if (failure) failure(operation, error);
+             }
+     ];
 }
 
 - (void) setupResponseDescriptors {
@@ -54,6 +86,11 @@ static BFFeedManager *sharedManager = nil;
                              method:RKRequestMethodPOST pathPattern:@"post" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
     
+    RKResponseDescriptor *postCommentDescriptor =
+    [RKResponseDescriptor responseDescriptorWithMapping:[BFMappingProvider commentMapping]
+                                                 method:RKRequestMethodPOST pathPattern:@"comment" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    
     // Error JSON looks like {"errors": "Some Error Has Occurred"}
     RKObjectMapping *errorMapping = [RKObjectMapping mappingForClass:[RKErrorMessage class]];
     // The entire value at the source key path containing the errors maps to the message
@@ -63,7 +100,7 @@ static BFFeedManager *sharedManager = nil;
     // Any response in the 4xx status code range with an "errors" key path uses this mapping
     RKResponseDescriptor *errorDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"errors" statusCodes:statusCodes];
 
-    [self addResponseDescriptorsFromArray:@[ postDescriptor, feedDescriptor, errorDescriptor ]];
+    [self addResponseDescriptorsFromArray:@[ postDescriptor, feedDescriptor, postCommentDescriptor, errorDescriptor ]];
 
     
     

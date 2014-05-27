@@ -1,4 +1,10 @@
-platform :ios, '6.0'
+platform :ios, '7.0'
 
 pod 'RestKit', '~> 0.23.0'
 pod 'BButton'
+pod 'SVProgressHUD'
+pod 'SSKeychain'
+pod 'WYPopoverController', '~> 0.2.2'
+pod 'TTTAttributedLabel'
+pod 'CRToast', '~> 0.0.7'
+pod 'UrbanAirship-iOS-SDK'

@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BFUser.h"
 
 @interface BFComment : NSObject
+
+@property (nonatomic, strong) NSString *commentId;
+@property (nonatomic, strong) NSString *commentText;
+@property (nonatomic, strong) BFUser *commentUser;
+@property (nonatomic, strong) NSDate *createdDate;
+
+@property (nonatomic, strong) NSString *parentPostId;
 
 @end

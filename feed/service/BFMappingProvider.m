@@ -25,10 +25,7 @@
     
     [mapping addAttributeMappingsFromDictionary:@{@"_id":@"postId",
                                                   @"newPostForUser":@"isNewPost"}];
-    [mapping addAttributeMappingsFromArray:@[@"postText"]];
-
-    /* TODO: fill-in*/
-    
+    [mapping addAttributeMappingsFromArray:@[@"postText", @"createdDate"]];
     
     
     /* First key is JSON Key, second is in Objective C Key */
@@ -39,8 +36,11 @@
 }
 + (RKObjectMapping *) commentMapping{
     RKObjectMapping *mapping = [RKObjectMapping mappingForClass:[BFComment class]];
-    /* TODO: fill-in*/
-
+    [mapping addAttributeMappingsFromDictionary:@{@"_id":@"commentId"}];
+    [mapping addAttributeMappingsFromArray:@[@"commentText", @"createdDate"]];
+    
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"commentUser" toKeyPath:@"commentUser" withMapping:[self userMapping]]];
+    
     return mapping;
 }
 @end

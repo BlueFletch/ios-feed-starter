@@ -11,7 +11,14 @@
 
 @interface BFUserManager : BFObjectManager
 
-+ (NSString *) username;
-- (void) authenticateWithUsername:(NSString *)username password:(NSString *)password success:(void (^)(BFUser *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure;
+extern NSString * const BFLoginStarted;
+extern NSString * const BFLoginEnded;
+extern NSString * const BFLoginFailed;
 
++ (NSString *) username;
++ (BFUser *) user;
+
+- (void) authenticateWithUsername:(NSString *)username password:(NSString *)password success:(void (^)(BFUser * user))success failure:(void (^)(RKObjectRequestOperation * operation, NSError *error))failure;
+- (void) authenticateIfAvailable:(void (^)(BFUser * user))success failure:(void (^)(RKObjectRequestOperation * operation, NSError *error))failure;
+- (void) setProfileImage:(UIImage *) image onSuccess:(void (^)(BFUser * user))success onFailure:(void (^)(RKObjectRequestOperation * operation, NSError *error))failure;
 @end

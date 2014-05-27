@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C023EA0193122C70003E35B /* BFTextView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C023E9F193122C70003E35B /* BFTextView+Category.m */; };
+		6C023EA319326E540003E35B /* UIView+Borders.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C023EA219326E540003E35B /* UIView+Borders.m */; };
+		6C023EA619327CEB0003E35B /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C023EA519327CEB0003E35B /* NSDate+Helper.m */; };
+		6C023EAA19328B480003E35B /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C023EA919328B480003E35B /* UIButton+AFNetworking.m */; };
 		6C194419192A890C00CE3DA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C194418192A890C00CE3DA8 /* Foundation.framework */; };
 		6C19441B192A890C00CE3DA8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C19441A192A890C00CE3DA8 /* CoreGraphics.framework */; };
 		6C19441D192A890C00CE3DA8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C19441C192A890C00CE3DA8 /* UIKit.framework */; };
@@ -23,6 +27,8 @@
 		6C743B47192B913D008BFB43 /* BFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C743B46192B913D008BFB43 /* BFLoginViewController.m */; };
 		6C743B4D192B96E9008BFB43 /* BFFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C743B4C192B96E9008BFB43 /* BFFeedTableViewCell.m */; };
 		6C9A0DF2192BA2CA0004D43A /* BFFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9A0DF1192BA2CA0004D43A /* BFFeedTableViewController.m */; };
+		6CF542441933AE4600591CF7 /* BFFeedReplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF542431933AE4600591CF7 /* BFFeedReplyTableViewCell.m */; };
+		6CF542471933BE2500591CF7 /* BFAddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CF542461933BE2500591CF7 /* BFAddCommentViewController.m */; };
 		6CFCBA3E192A994B0084E937 /* BFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFCBA3D192A994B0084E937 /* BFUser.m */; };
 		6CFCBA41192A99E10084E937 /* BFMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFCBA40192A99E10084E937 /* BFMappingProvider.m */; };
 		6CFCBA44192A9A440084E937 /* BFObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFCBA43192A9A440084E937 /* BFObjectManager.m */; };
@@ -45,6 +51,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C023E9E193122C70003E35B /* BFTextView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BFTextView+Category.h"; path = "feed/helpers/BFTextView+Category.h"; sourceTree = "<group>"; };
+		6C023E9F193122C70003E35B /* BFTextView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BFTextView+Category.m"; path = "feed/helpers/BFTextView+Category.m"; sourceTree = "<group>"; };
+		6C023EA119326E540003E35B /* UIView+Borders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Borders.h"; sourceTree = "<group>"; };
+		6C023EA219326E540003E35B /* UIView+Borders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Borders.m"; sourceTree = "<group>"; };
+		6C023EA419327CEB0003E35B /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		6C023EA519327CEB0003E35B /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		6C023EA819328B480003E35B /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		6C023EA919328B480003E35B /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		6C194415192A890C00CE3DA8 /* feed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C194418192A890C00CE3DA8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6C19441A192A890C00CE3DA8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -68,6 +82,10 @@
 		6C743B4C192B96E9008BFB43 /* BFFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFFeedTableViewCell.m; sourceTree = "<group>"; };
 		6C9A0DF0192BA2CA0004D43A /* BFFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFFeedTableViewController.h; sourceTree = "<group>"; };
 		6C9A0DF1192BA2CA0004D43A /* BFFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFFeedTableViewController.m; sourceTree = "<group>"; };
+		6CF542421933AE4600591CF7 /* BFFeedReplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFFeedReplyTableViewCell.h; sourceTree = "<group>"; };
+		6CF542431933AE4600591CF7 /* BFFeedReplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFFeedReplyTableViewCell.m; sourceTree = "<group>"; };
+		6CF542451933BE2500591CF7 /* BFAddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFAddCommentViewController.h; sourceTree = "<group>"; };
+		6CF542461933BE2500591CF7 /* BFAddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFAddCommentViewController.m; sourceTree = "<group>"; };
 		6CFCBA3C192A994B0084E937 /* BFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFUser.h; sourceTree = "<group>"; };
 		6CFCBA3D192A994B0084E937 /* BFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFUser.m; sourceTree = "<group>"; };
 		6CFCBA3F192A99E10084E937 /* BFMappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFMappingProvider.h; sourceTree = "<group>"; };
@@ -112,9 +130,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C023E9D193122940003E35B /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6C023EA419327CEB0003E35B /* NSDate+Helper.h */,
+				6C023EA519327CEB0003E35B /* NSDate+Helper.m */,
+				6C023EA119326E540003E35B /* UIView+Borders.h */,
+				6C023EA219326E540003E35B /* UIView+Borders.m */,
+				6C023E9E193122C70003E35B /* BFTextView+Category.h */,
+				6C023E9F193122C70003E35B /* BFTextView+Category.m */,
+				6C023EA819328B480003E35B /* UIButton+AFNetworking.h */,
+				6C023EA919328B480003E35B /* UIButton+AFNetworking.m */,
+			);
+			name = helpers;
+			sourceTree = "<group>";
+		};
 		6C19440C192A890C00CE3DA8 = {
 			isa = PBXGroup;
 			children = (
+				6C023E9D193122940003E35B /* helpers */,
 				AD188B08192BCCC4003AD235 /* images */,
 				6CFCBA39192A99040084E937 /* service */,
 				6CFCBA3B192A99040084E937 /* models */,
@@ -155,8 +189,12 @@
 				6C19442A192A890C00CE3DA8 /* Main.storyboard */,
 				6C743B45192B913D008BFB43 /* BFLoginViewController.h */,
 				6C743B46192B913D008BFB43 /* BFLoginViewController.m */,
+				6CF542451933BE2500591CF7 /* BFAddCommentViewController.h */,
+				6CF542461933BE2500591CF7 /* BFAddCommentViewController.m */,
 				6C9A0DF0192BA2CA0004D43A /* BFFeedTableViewController.h */,
 				6C9A0DF1192BA2CA0004D43A /* BFFeedTableViewController.m */,
+				6CF542421933AE4600591CF7 /* BFFeedReplyTableViewCell.h */,
+				6CF542431933AE4600591CF7 /* BFFeedReplyTableViewCell.m */,
 				6C743B4B192B96E9008BFB43 /* BFFeedTableViewCell.h */,
 				6C743B4C192B96E9008BFB43 /* BFFeedTableViewCell.m */,
 				6C194430192A890C00CE3DA8 /* Images.xcassets */,
@@ -282,6 +320,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = bluefletch;
 				TargetAttributes = {
+					6C194414192A890C00CE3DA8 = {
+						DevelopmentTeam = 6NXWRT5NFB;
+					};
 					6C194435192A890C00CE3DA8 = {
 						TestTargetID = 6C194414192A890C00CE3DA8;
 					};
@@ -366,18 +407,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CF542441933AE4600591CF7 /* BFFeedReplyTableViewCell.m in Sources */,
+				6C023EAA19328B480003E35B /* UIButton+AFNetworking.m in Sources */,
 				6CFCBA4A192A9F160084E937 /* BFPost.m in Sources */,
 				6C194429192A890C00CE3DA8 /* BFAppDelegate.m in Sources */,
+				6CF542471933BE2500591CF7 /* BFAddCommentViewController.m in Sources */,
 				6CFCBA44192A9A440084E937 /* BFObjectManager.m in Sources */,
 				6C9A0DF2192BA2CA0004D43A /* BFFeedTableViewController.m in Sources */,
+				6C023EA619327CEB0003E35B /* NSDate+Helper.m in Sources */,
 				6CFCBA3E192A994B0084E937 /* BFUser.m in Sources */,
 				6CFCBA4D192A9F250084E937 /* BFComment.m in Sources */,
 				6C194425192A890C00CE3DA8 /* main.m in Sources */,
 				6C743B4D192B96E9008BFB43 /* BFFeedTableViewCell.m in Sources */,
 				6CFCBA50192AA33A0084E937 /* BFFeedManager.m in Sources */,
 				6C743B47192B913D008BFB43 /* BFLoginViewController.m in Sources */,
+				6C023EA0193122C70003E35B /* BFTextView+Category.m in Sources */,
 				6CFCBA41192A99E10084E937 /* BFMappingProvider.m in Sources */,
 				6CFCBA47192A9AF60084E937 /* BFUserManager.m in Sources */,
+				6C023EA319326E540003E35B /* UIView+Borders.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +550,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "feed/feed-Prefix.pch";
 				INFOPLIST_FILE = "feed/feed-Info.plist";
@@ -517,6 +565,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "feed/feed-Prefix.pch";
 				INFOPLIST_FILE = "feed/feed-Info.plist";

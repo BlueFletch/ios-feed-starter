@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *imageUrl;
-@property (nonatomic) NSDate *lastActionDate;
-@property (nonatomic) NSDate *createdDate;
+@property (nonatomic, strong) NSDate *lastActionDate;
+@property (nonatomic, strong) NSDate *createdDate;
 
 @end

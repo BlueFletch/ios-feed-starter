@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTTAttributedLabel.h"
 
-@interface BFFeedTableViewCell : UITableViewCell
+@interface BFFeedTableViewCell : UITableViewCell <TTTAttributedLabelDelegate, UIActionSheetDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
-@property (weak, nonatomic) IBOutlet UILabel *feedText;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *feedText;
 
 @end

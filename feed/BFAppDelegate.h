@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UAPush.h"
 
-@interface BFAppDelegate : UIResponder <UIApplicationDelegate>
+@interface BFAppDelegate : UIResponder <UIApplicationDelegate,UAPushNotificationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
